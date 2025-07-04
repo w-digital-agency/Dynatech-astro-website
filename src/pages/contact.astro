@@ -1,0 +1,465 @@
+---
+import DefaultLayout from '../layouts/DefaultLayout.astro';
+---
+
+<DefaultLayout
+	title="Contact Us - Dynatech"
+	description="Get in touch with Hong Kong's leading AI coaching and consulting experts. Transform your business with AI solutions."
+>
+	<!-- Contact Hero Section -->
+	<section class="contact-hero-section">
+		<div class="container">
+			<h1 class="hero-title">
+				Contact <span class="highlight">Dynatech</span>
+			</h1>
+			<p class="hero-subtitle">
+				Ready to unlock AI for your business? Connect with Hong Kong's leading AI coaching and consulting experts. 
+				We're here to help you navigate the AI landscape and transform your business with intelligent solutions.
+			</p>
+		</div>
+	</section>
+
+	<!-- Contact Information Section -->
+	<section class="contact-info-section">
+		<div class="container">
+			<h2 class="section-title">Get in Touch</h2>
+			<div class="contact-info-grid">
+				<div class="info-card">
+					<div class="info-icon">📧</div>
+					<h3>Email</h3>
+					<p>
+						<a href="mailto:info@dynatech.com.hk">info@dynatech.com.hk</a>
+					</p>
+				</div>
+				<div class="info-card">
+					<div class="info-icon">📍</div>
+					<h3>Location</h3>
+					<p>Hong Kong SAR</p>
+				</div>
+				<div class="info-card">
+					<div class="info-icon">🔗</div>
+					<h3>Follow Us</h3>
+					<p>
+						<a href="https://www.linkedin.com/company/dynatech-hk" target="_blank">LinkedIn</a> • 
+						<a href="https://github.com/dynatech-hk" target="_blank">GitHub</a>
+					</p>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<!-- Contact Form Section -->
+	<section class="contact-form-section">
+		<div class="container">
+			<div class="form-grid">
+				<div class="form-content">
+					<h2>Start Your AI Journey</h2>
+					<p class="form-subtitle">
+						Fill out the form and we'll get back to you within 24 hours. Let's discuss how AI can transform your business.
+					</p>
+					
+					<form action="https://formspree.io/f/mvgpjneq" method="POST" class="contact-form">
+						<div class="form-group">
+							<label for="name">Name *</label>
+							<input type="text" id="name" name="name" required />
+						</div>
+
+						<div class="form-group">
+							<label for="email">Email *</label>
+							<input type="email" id="email" name="email" required />
+						</div>
+
+						<div class="form-group">
+							<label for="company">Company</label>
+							<input type="text" id="company" name="company" />
+						</div>
+
+						<div class="form-group">
+							<label for="subject">How can we help? *</label>
+							<select id="subject" name="subject" required>
+								<option value="">Please select a service</option>
+								<option value="AI Strategy Consulting">AI Strategy Consulting</option>
+								<option value="Executive AI Coaching">Executive AI Coaching</option>
+								<option value="Team Training">Team Training & Development</option>
+								<option value="AI Implementation">AI Solution Implementation</option>
+								<option value="General Inquiry">General Inquiry</option>
+							</select>
+						</div>
+
+						<div class="form-group">
+							<label for="message">Tell us about your AI goals *</label>
+							<textarea 
+								id="message" 
+								name="message" 
+								required 
+								rows="5"
+								placeholder="Describe your current challenges and how you envision AI helping your business..."
+							></textarea>
+						</div>
+
+						<button type="submit" class="button primary form-button">
+							Send Message
+						</button>
+					</form>
+				</div>
+
+				<div class="benefits-content">
+					<h3>Why Choose Dynatech?</h3>
+					<ul class="benefits">
+						<li>
+							<span class="check">✓</span>
+							<span><strong>Local Expertise:</strong> Deep understanding of Hong Kong's business landscape</span>
+						</li>
+						<li>
+							<span class="check">✓</span>
+							<span><strong>Proven Track Record:</strong> 100+ successful AI implementations</span>
+						</li>
+						<li>
+							<span class="check">✓</span>
+							<span><strong>Practical Approach:</strong> Focus on real-world applications with measurable ROI</span>
+						</li>
+						<li>
+							<span class="check">✓</span>
+							<span><strong>Ongoing Support:</strong> Continuous guidance throughout your AI journey</span>
+						</li>
+						<li>
+							<span class="check">✓</span>
+							<span><strong>24-hour Response:</strong> Quick response to all inquiries</span>
+						</li>
+						<li>
+							<span class="check">✓</span>
+							<span><strong>Free Consultation:</strong> Initial consultation at no cost</span>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<!-- Call to Action -->
+	<section class="cta-section">
+		<div class="container">
+			<h2>Ready to Transform Your Business with AI?</h2>
+			<p>
+				Join the growing number of Hong Kong businesses leveraging AI for competitive advantage. 
+				Let's discuss your AI transformation journey today.
+			</p>
+			<div class="cta-buttons">
+				<a href="/about" class="button primary">
+					Learn More About Us
+				</a>
+				<a href="/services" class="button secondary">
+					Our Services
+				</a>
+			</div>
+		</div>
+	</section>
+</DefaultLayout>
+
+<style>
+	.container {
+		max-width: 1200px;
+		margin: 0 auto;
+		padding: 0 1rem;
+	}
+	
+	.section-title {
+		font-size: 3.5rem;
+		text-align: center;
+		margin-bottom: 3rem;
+		color: #1f2937;
+	}
+
+	/* Contact Hero Section */
+	.contact-hero-section {
+		padding: 6rem 0 4rem;
+		background: linear-gradient(135deg, #f8fafc, #e2e8f0);
+		text-align: center;
+	}
+
+	.hero-title {
+		font-size: 4rem;
+		margin-bottom: 1.5rem;
+		color: #1f2937;
+		font-weight: 700;
+	}
+
+	.highlight {
+		color: #2563eb;
+	}
+
+	.hero-subtitle {
+		font-size: 1.25rem;
+		color: #6b7280;
+		max-width: 800px;
+		margin: 0 auto;
+		line-height: 1.6;
+	}
+
+	/* Contact Info Section */
+	.contact-info-section {
+		padding: 4rem 0;
+	}
+
+	.contact-info-grid {
+		display: grid;
+		grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+		gap: 2rem;
+	}
+
+	.info-card {
+		background: white;
+		padding: 2rem;
+		border-radius: 1rem;
+		box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+		text-align: center;
+		transition: transform 0.3s ease, box-shadow 0.3s ease;
+	}
+
+	.info-card:hover {
+		transform: translateY(-5px);
+		box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+	}
+
+	.info-icon {
+		font-size: 3rem;
+		margin-bottom: 1rem;
+	}
+
+	.info-card h3 {
+		font-size: 1.5rem;
+		margin-bottom: 1rem;
+		color: #1f2937;
+	}
+
+	.info-card p {
+		color: #6b7280;
+		line-height: 1.6;
+	}
+
+	.info-card a {
+		color: #2563eb;
+		text-decoration: none;
+		transition: color 0.3s ease;
+	}
+
+	.info-card a:hover {
+		color: #1d4ed8;
+	}
+
+	/* Contact Form Section */
+	.contact-form-section {
+		padding: 4rem 0;
+		background: #f9fafb;
+	}
+
+	.form-grid {
+		display: grid;
+		grid-template-columns: 1fr 1fr;
+		gap: 4rem;
+		align-items: start;
+	}
+
+	.form-content h2 {
+		font-size: 3rem;
+		margin-bottom: 1rem;
+		color: #1f2937;
+	}
+
+	.form-subtitle {
+		font-size: 1.125rem;
+		color: #6b7280;
+		margin-bottom: 2rem;
+		line-height: 1.6;
+	}
+
+	.contact-form {
+		background: white;
+		padding: 2rem;
+		border-radius: 1rem;
+		box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+	}
+
+	.form-group {
+		margin-bottom: 1.5rem;
+	}
+
+	.form-group label {
+		display: block;
+		font-weight: 600;
+		color: #374151;
+		margin-bottom: 0.5rem;
+	}
+
+	.form-group input,
+	.form-group select,
+	.form-group textarea {
+		width: 100%;
+		padding: 0.75rem;
+		border: 2px solid #d1d5db;
+		border-radius: 0.5rem;
+		font-size: 1rem;
+		transition: border-color 0.3s ease;
+		background: white;
+	}
+
+	.form-group input:focus,
+	.form-group select:focus,
+	.form-group textarea:focus {
+		outline: none;
+		border-color: #2563eb;
+	}
+
+	.form-group textarea {
+		resize: vertical;
+		min-height: 120px;
+	}
+
+	.form-button {
+		width: 100%;
+		margin-top: 1rem;
+	}
+
+	/* Benefits Content */
+	.benefits-content {
+		background: white;
+		padding: 2rem;
+		border-radius: 1rem;
+		box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+	}
+
+	.benefits-content h3 {
+		font-size: 2rem;
+		margin-bottom: 1.5rem;
+		color: #1f2937;
+	}
+
+	.benefits {
+		list-style: none;
+		padding: 0;
+		margin: 0;
+	}
+
+	.benefits li {
+		display: flex;
+		align-items: flex-start;
+		gap: 1rem;
+		margin-bottom: 1rem;
+		padding-bottom: 1rem;
+		border-bottom: 1px solid #f3f4f6;
+	}
+
+	.benefits li:last-child {
+		border-bottom: none;
+		margin-bottom: 0;
+		padding-bottom: 0;
+	}
+
+	.check {
+		color: #2563eb;
+		font-size: 1.25rem;
+		font-weight: bold;
+		margin-top: 0.1rem;
+	}
+
+	/* CTA Section */
+	.cta-section {
+		padding: 4rem 0;
+		background: linear-gradient(135deg, #2563eb, #7c3aed);
+		text-align: center;
+		color: white;
+	}
+
+	.cta-section h2 {
+		font-size: 3rem;
+		margin-bottom: 1rem;
+	}
+
+	.cta-section p {
+		font-size: 1.25rem;
+		margin-bottom: 2rem;
+		max-width: 600px;
+		margin-left: auto;
+		margin-right: auto;
+	}
+
+	.cta-buttons {
+		display: flex;
+		gap: 1rem;
+		justify-content: center;
+	}
+
+	/* Buttons */
+	.button {
+		display: inline-block;
+		padding: 1rem 2rem;
+		border-radius: 0.5rem;
+		text-decoration: none;
+		font-weight: 600;
+		transition: all 0.3s ease;
+		border: 2px solid #2563eb;
+		background: #2563eb;
+		color: white;
+		cursor: pointer;
+		font-size: 1rem;
+	}
+
+	.button:hover {
+		transform: translateY(-2px);
+		box-shadow: 0 4px 12px rgba(37, 99, 235, 0.4);
+	}
+
+	.button.primary {
+		background: white;
+		color: #2563eb;
+		border-color: white;
+	}
+
+	.button.primary:hover {
+		background: #f1f5f9;
+	}
+
+	.button.secondary {
+		background: transparent;
+		color: white;
+		border-color: white;
+	}
+
+	.button.secondary:hover {
+		background: white;
+		color: #2563eb;
+	}
+
+	/* Responsive */
+	@media (max-width: 768px) {
+		.hero-title {
+			font-size: 2.5rem;
+		}
+
+		.section-title {
+			font-size: 2.5rem;
+		}
+
+		.form-grid {
+			grid-template-columns: 1fr;
+			gap: 2rem;
+		}
+
+		.form-content h2 {
+			font-size: 2rem;
+		}
+
+		.cta-section h2 {
+			font-size: 2rem;
+		}
+
+		.cta-buttons {
+			flex-direction: column;
+			align-items: center;
+		}
+
+		.contact-info-grid {
+			grid-template-columns: 1fr;
+		}
+	}
+</style>

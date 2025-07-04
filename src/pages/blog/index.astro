@@ -1,0 +1,348 @@
+---
+import DefaultLayout from '../../layouts/DefaultLayout.astro';
+import { getCollection } from 'astro:content';
+import FormattedDate from '../../components/FormattedDate.astro';
+
+const posts = (await getCollection('blog')).sort(
+	(a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf(),
+);
+---
+
+<DefaultLayout
+	title="Blog - Dynatech"
+	description="Discover insights, tips, and the latest trends in AI coaching and consulting from Hong Kong's leading AI experts."
+>
+	<!-- Blog Hero Section -->
+	<section class="blog-hero-section">
+		<div class="container">
+			<div class="hero-badge">
+				<span>📚</span>
+				Insights & Knowledge
+			</div>
+			<h1 class="hero-title">
+				AI Insights <span class="highlight">Blog</span>
+			</h1>
+			<p class="hero-subtitle">
+				Stay ahead with the latest AI trends, strategies, and insights from Hong Kong's leading AI coaching and consulting experts.
+			</p>
+		</div>
+	</section>
+
+	<!-- Blog Posts Section -->
+	<section class="blog-posts-section">
+		<div class="container">
+			{posts.length > 0 ? (
+				<div class="blog-grid">
+					{posts.map((post, index) => (
+						<article class={`blog-card ${index === 0 ? 'featured' : ''}`}>
+							<a href={`/blog/${post.id}/`} class="blog-link">
+								{post.data.heroImage && (
+									<div class="blog-image">
+										<img 
+											src={post.data.heroImage} 
+											alt={post.data.title}
+											class="blog-img"
+										/>
+									</div>
+								)}
+								<div class="blog-content">
+									<div class="blog-date">
+										<span class="date-icon">📅</span>
+										<FormattedDate date={post.data.pubDate} />
+									</div>
+									
+									<h2 class={`blog-title ${index === 0 ? 'featured-title' : ''}`}>
+										{post.data.title}
+									</h2>
+									
+									{post.data.description && (
+										<p class={`blog-description ${index === 0 ? 'featured-description' : ''}`}>
+											{post.data.description}
+										</p>
+									)}
+									
+									<div class="read-more">
+										Read More →
+									</div>
+								</div>
+							</a>
+						</article>
+					))}
+				</div>
+			) : (
+				<div class="no-posts">
+					<div class="no-posts-icon">📄</div>
+					<h3>No blog posts yet</h3>
+					<p>Check back soon for insights and updates from our AI experts.</p>
+				</div>
+			)}
+		</div>
+	</section>
+
+	<!-- CTA Section -->
+	<section class="cta-section">
+		<div class="container">
+			<h2>Ready to Start Your AI Journey?</h2>
+			<p>
+				Don't just read about AI transformation – experience it. Connect with our experts for personalized guidance.
+			</p>
+			<div class="cta-buttons">
+				<a href="/contact" class="button primary">
+					Get Expert Consultation
+				</a>
+			</div>
+		</div>
+	</section>
+</DefaultLayout>
+
+<style>
+	.container {
+		max-width: 1200px;
+		margin: 0 auto;
+		padding: 0 1rem;
+	}
+
+	/* Blog Hero Section */
+	.blog-hero-section {
+		padding: 6rem 0 4rem;
+		background: linear-gradient(135deg, #f8fafc, #e2e8f0);
+		text-align: center;
+	}
+
+	.hero-badge {
+		display: inline-flex;
+		align-items: center;
+		gap: 0.5rem;
+		padding: 0.75rem 1.5rem;
+		background: #dbeafe;
+		color: #1d4ed8;
+		border-radius: 50px;
+		font-weight: 600;
+		margin-bottom: 2rem;
+		font-size: 0.875rem;
+	}
+
+	.hero-title {
+		font-size: 4rem;
+		margin-bottom: 1.5rem;
+		color: #1f2937;
+		font-weight: 700;
+		line-height: 1.1;
+	}
+
+	.highlight {
+		color: #2563eb;
+	}
+
+	.hero-subtitle {
+		font-size: 1.25rem;
+		color: #6b7280;
+		max-width: 800px;
+		margin: 0 auto;
+		line-height: 1.6;
+	}
+
+	/* Blog Posts Section */
+	.blog-posts-section {
+		padding: 4rem 0;
+	}
+
+	.blog-grid {
+		display: grid;
+		grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+		gap: 2rem;
+	}
+
+	.blog-card {
+		background: white;
+		border-radius: 1rem;
+		box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+		overflow: hidden;
+		transition: transform 0.3s ease, box-shadow 0.3s ease;
+	}
+
+	.blog-card:hover {
+		transform: translateY(-5px);
+		box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+	}
+
+	.blog-card.featured {
+		grid-column: 1 / -1;
+	}
+
+	.blog-link {
+		display: block;
+		text-decoration: none;
+		color: inherit;
+	}
+
+	.blog-image {
+		aspect-ratio: 16/9;
+		overflow: hidden;
+	}
+
+	.blog-img {
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
+		transition: transform 0.3s ease;
+	}
+
+	.blog-card:hover .blog-img {
+		transform: scale(1.05);
+	}
+
+	.blog-content {
+		padding: 1.5rem;
+	}
+
+	.blog-date {
+		display: flex;
+		align-items: center;
+		gap: 0.5rem;
+		color: #6b7280;
+		font-size: 0.875rem;
+		margin-bottom: 1rem;
+	}
+
+	.date-icon {
+		font-size: 1rem;
+	}
+
+	.blog-title {
+		font-size: 1.5rem;
+		font-weight: 700;
+		color: #1f2937;
+		margin-bottom: 1rem;
+		line-height: 1.3;
+		transition: color 0.3s ease;
+	}
+
+	.blog-title.featured-title {
+		font-size: 2rem;
+	}
+
+	.blog-link:hover .blog-title {
+		color: #2563eb;
+	}
+
+	.blog-description {
+		color: #6b7280;
+		line-height: 1.6;
+		margin-bottom: 1.5rem;
+	}
+
+	.blog-description.featured-description {
+		font-size: 1.125rem;
+	}
+
+	.read-more {
+		color: #2563eb;
+		font-weight: 600;
+		transition: color 0.3s ease;
+	}
+
+	.blog-link:hover .read-more {
+		color: #1d4ed8;
+	}
+
+	/* No Posts State */
+	.no-posts {
+		text-align: center;
+		padding: 4rem 0;
+	}
+
+	.no-posts-icon {
+		font-size: 4rem;
+		margin-bottom: 1.5rem;
+	}
+
+	.no-posts h3 {
+		font-size: 1.5rem;
+		color: #1f2937;
+		margin-bottom: 1rem;
+	}
+
+	.no-posts p {
+		color: #6b7280;
+		font-size: 1.125rem;
+	}
+
+	/* CTA Section */
+	.cta-section {
+		padding: 4rem 0;
+		background: linear-gradient(135deg, #2563eb, #7c3aed);
+		text-align: center;
+		color: white;
+	}
+
+	.cta-section h2 {
+		font-size: 3rem;
+		margin-bottom: 1rem;
+	}
+
+	.cta-section p {
+		font-size: 1.25rem;
+		margin-bottom: 2rem;
+		max-width: 600px;
+		margin-left: auto;
+		margin-right: auto;
+	}
+
+	.cta-buttons {
+		display: flex;
+		gap: 1rem;
+		justify-content: center;
+	}
+
+	/* Buttons */
+	.button {
+		display: inline-block;
+		padding: 1rem 2rem;
+		border-radius: 0.5rem;
+		text-decoration: none;
+		font-weight: 600;
+		transition: all 0.3s ease;
+		border: 2px solid #2563eb;
+		background: #2563eb;
+		color: white;
+	}
+
+	.button:hover {
+		transform: translateY(-2px);
+		box-shadow: 0 4px 12px rgba(37, 99, 235, 0.4);
+	}
+
+	.button.primary {
+		background: white;
+		color: #2563eb;
+		border-color: white;
+	}
+
+	.button.primary:hover {
+		background: #f1f5f9;
+	}
+
+	/* Responsive */
+	@media (max-width: 768px) {
+		.hero-title {
+			font-size: 2.5rem;
+		}
+
+		.cta-section h2 {
+			font-size: 2rem;
+		}
+
+		.blog-grid {
+			grid-template-columns: 1fr;
+		}
+
+		.blog-card.featured {
+			grid-column: 1;
+		}
+
+		.blog-title.featured-title {
+			font-size: 1.75rem;
+		}
+	}
+</style>

@@ -1,0 +1,463 @@
+---
+import { type CollectionEntry, getCollection } from 'astro:content';
+import DefaultLayout from '../../layouts/DefaultLayout.astro';
+import FormattedDate from '../../components/FormattedDate.astro';
+import { render } from 'astro:content';
+
+export async function getStaticPaths() {
+	const posts = await getCollection('blog');
+	return posts.map((post) => ({
+		params: { slug: post.id },
+		props: post,
+	}));
+}
+type Props = CollectionEntry<'blog'>;
+
+const post = Astro.props;
+const { Content } = await render(post);
+const { title, description, pubDate, updatedDate, heroImage } = post.data;
+---
+
+<DefaultLayout title={title} description={description}>
+	<!-- Blog Post Section -->
+	<section class="blog-post-section">
+		<div class="container">
+			<!-- Breadcrumb -->
+			<nav class="breadcrumb">
+				<a href="/">Home</a>
+				<span class="separator">→</span>
+				<a href="/blog">Blog</a>
+				<span class="separator">→</span>
+				<span class="current">{title}</span>
+			</nav>
+
+			<article class="blog-article">
+				<!-- Article Header -->
+				<header class="article-header">
+					<div class="article-badge">
+						<span>📅</span>
+						<FormattedDate date={pubDate} />
+					</div>
+					
+					<h1 class="article-title">
+						{title}
+					</h1>
+					
+					{description && (
+						<p class="article-description">
+							{description}
+						</p>
+					)}
+					
+					{updatedDate && (
+						<div class="article-updated">
+							Last updated on <FormattedDate date={updatedDate} />
+						</div>
+					)}
+				</header>
+
+				<!-- Hero Image -->
+				{heroImage && (
+					<div class="article-image">
+						<img 
+							src={heroImage} 
+							alt={title}
+							class="hero-img"
+						/>
+					</div>
+				)}
+
+				<!-- Article Content -->
+				<div class="article-content">
+					<Content />
+				</div>
+
+				<!-- Article Footer -->
+				<footer class="article-footer">
+					<div class="footer-nav">
+						<a href="/blog" class="back-link">
+							← Back to Blog
+						</a>
+						
+						<div class="share-section">
+							<span class="share-label">Share:</span>
+							<div class="share-links">
+								<a href={`https://twitter.com/intent/tweet?url=${Astro.url}&text=${title}`} target="_blank" class="share-link twitter">
+									🐦
+								</a>
+								<a href={`https://www.linkedin.com/sharing/share-offsite/?url=${Astro.url}`} target="_blank" class="share-link linkedin">
+									💼
+								</a>
+							</div>
+						</div>
+					</div>
+				</footer>
+			</article>
+		</div>
+	</section>
+
+	<!-- CTA Section -->
+	<section class="cta-section">
+		<div class="container">
+			<h2>Ready to Apply These Insights?</h2>
+			<p>
+				Turn knowledge into action. Connect with our AI experts to implement these strategies in your business.
+			</p>
+			<div class="cta-buttons">
+				<a href="/contact" class="button primary">
+					Get Expert Guidance
+				</a>
+			</div>
+		</div>
+	</section>
+</DefaultLayout>
+
+<style>
+	.container {
+		max-width: 1200px;
+		margin: 0 auto;
+		padding: 0 1rem;
+	}
+
+	/* Blog Post Section */
+	.blog-post-section {
+		padding: 2rem 0 4rem;
+	}
+
+	/* Breadcrumb */
+	.breadcrumb {
+		margin-bottom: 2rem;
+		font-size: 0.875rem;
+		color: #6b7280;
+	}
+
+	.breadcrumb a {
+		color: #2563eb;
+		text-decoration: none;
+		transition: color 0.3s ease;
+	}
+
+	.breadcrumb a:hover {
+		color: #1d4ed8;
+	}
+
+	.separator {
+		margin: 0 0.5rem;
+		color: #9ca3af;
+	}
+
+	.current {
+		color: #1f2937;
+		font-weight: 500;
+	}
+
+	/* Blog Article */
+	.blog-article {
+		max-width: 800px;
+		margin: 0 auto;
+	}
+
+	/* Article Header */
+	.article-header {
+		text-align: center;
+		margin-bottom: 3rem;
+	}
+
+	.article-badge {
+		display: inline-flex;
+		align-items: center;
+		gap: 0.5rem;
+		padding: 0.5rem 1rem;
+		background: #dbeafe;
+		color: #1d4ed8;
+		border-radius: 50px;
+		font-weight: 600;
+		margin-bottom: 1.5rem;
+		font-size: 0.875rem;
+	}
+
+	.article-title {
+		font-size: 3.5rem;
+		font-weight: 700;
+		color: #1f2937;
+		margin-bottom: 1.5rem;
+		line-height: 1.1;
+	}
+
+	.article-description {
+		font-size: 1.25rem;
+		color: #6b7280;
+		line-height: 1.6;
+		margin-bottom: 1rem;
+	}
+
+	.article-updated {
+		font-size: 0.875rem;
+		color: #6b7280;
+		font-style: italic;
+	}
+
+	/* Article Image */
+	.article-image {
+		margin-bottom: 3rem;
+		border-radius: 1rem;
+		overflow: hidden;
+		box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+	}
+
+	.hero-img {
+		width: 100%;
+		height: auto;
+		object-fit: cover;
+	}
+
+	/* Article Content */
+	.article-content {
+		color: #374151;
+		line-height: 1.7;
+		font-size: 1.125rem;
+	}
+
+	.article-content h1,
+	.article-content h2,
+	.article-content h3,
+	.article-content h4,
+	.article-content h5,
+	.article-content h6 {
+		color: #1f2937;
+		font-weight: 700;
+		margin-top: 2rem;
+		margin-bottom: 1rem;
+	}
+
+	.article-content h2 {
+		font-size: 1.875rem;
+		border-bottom: 2px solid #e5e7eb;
+		padding-bottom: 0.5rem;
+	}
+
+	.article-content h3 {
+		font-size: 1.5rem;
+	}
+
+	.article-content p {
+		margin-bottom: 1.5rem;
+	}
+
+	.article-content a {
+		color: #2563eb;
+		text-decoration: underline;
+		text-decoration-color: rgba(37, 99, 235, 0.3);
+		transition: all 0.2s ease;
+	}
+
+	.article-content a:hover {
+		color: #1d4ed8;
+		text-decoration-color: #1d4ed8;
+	}
+
+	.article-content ul,
+	.article-content ol {
+		margin: 1.5rem 0;
+		padding-left: 1.5rem;
+	}
+
+	.article-content li {
+		margin-bottom: 0.5rem;
+	}
+
+	.article-content blockquote {
+		border-left: 4px solid #2563eb;
+		padding-left: 1.5rem;
+		margin: 2rem 0;
+		font-style: italic;
+		color: #6b7280;
+		background: #f8fafc;
+		padding: 1.5rem;
+		border-radius: 0.5rem;
+	}
+
+	.article-content code {
+		background: #f1f5f9;
+		padding: 0.2rem 0.4rem;
+		border-radius: 0.25rem;
+		font-size: 0.875rem;
+		color: #1e293b;
+	}
+
+	.article-content pre {
+		background: #1e293b;
+		color: #e2e8f0;
+		padding: 1.5rem;
+		border-radius: 0.5rem;
+		overflow-x: auto;
+		margin: 1.5rem 0;
+	}
+
+	.article-content pre code {
+		background: transparent;
+		padding: 0;
+		color: inherit;
+	}
+
+	.article-content img {
+		border-radius: 0.5rem;
+		margin: 2rem 0;
+		box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+	}
+
+	.article-content hr {
+		border: none;
+		height: 1px;
+		background: #e5e7eb;
+		margin: 2rem 0;
+	}
+
+	/* Article Footer */
+	.article-footer {
+		margin-top: 3rem;
+		padding-top: 2rem;
+		border-top: 1px solid #e5e7eb;
+	}
+
+	.footer-nav {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+	}
+
+	.back-link {
+		color: #2563eb;
+		text-decoration: none;
+		font-weight: 600;
+		transition: color 0.3s ease;
+	}
+
+	.back-link:hover {
+		color: #1d4ed8;
+	}
+
+	.share-section {
+		display: flex;
+		align-items: center;
+		gap: 1rem;
+	}
+
+	.share-label {
+		font-size: 0.875rem;
+		color: #6b7280;
+	}
+
+	.share-links {
+		display: flex;
+		gap: 0.5rem;
+	}
+
+	.share-link {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		width: 2.5rem;
+		height: 2.5rem;
+		border-radius: 0.5rem;
+		text-decoration: none;
+		font-size: 1.25rem;
+		transition: transform 0.3s ease, background-color 0.3s ease;
+	}
+
+	.share-link:hover {
+		transform: translateY(-2px);
+	}
+
+	.share-link.twitter {
+		background: #f0f9ff;
+	}
+
+	.share-link.twitter:hover {
+		background: #dbeafe;
+	}
+
+	.share-link.linkedin {
+		background: #f8fafc;
+	}
+
+	.share-link.linkedin:hover {
+		background: #e2e8f0;
+	}
+
+	/* CTA Section */
+	.cta-section {
+		padding: 4rem 0;
+		background: linear-gradient(135deg, #2563eb, #7c3aed);
+		text-align: center;
+		color: white;
+	}
+
+	.cta-section h2 {
+		font-size: 3rem;
+		margin-bottom: 1rem;
+	}
+
+	.cta-section p {
+		font-size: 1.25rem;
+		margin-bottom: 2rem;
+		max-width: 600px;
+		margin-left: auto;
+		margin-right: auto;
+	}
+
+	.cta-buttons {
+		display: flex;
+		gap: 1rem;
+		justify-content: center;
+	}
+
+	/* Buttons */
+	.button {
+		display: inline-block;
+		padding: 1rem 2rem;
+		border-radius: 0.5rem;
+		text-decoration: none;
+		font-weight: 600;
+		transition: all 0.3s ease;
+		border: 2px solid #2563eb;
+		background: #2563eb;
+		color: white;
+	}
+
+	.button:hover {
+		transform: translateY(-2px);
+		box-shadow: 0 4px 12px rgba(37, 99, 235, 0.4);
+	}
+
+	.button.primary {
+		background: white;
+		color: #2563eb;
+		border-color: white;
+	}
+
+	.button.primary:hover {
+		background: #f1f5f9;
+	}
+
+	/* Responsive */
+	@media (max-width: 768px) {
+		.article-title {
+			font-size: 2.5rem;
+		}
+
+		.cta-section h2 {
+			font-size: 2rem;
+		}
+
+		.footer-nav {
+			flex-direction: column;
+			gap: 1rem;
+			text-align: center;
+		}
+
+		.share-section {
+			justify-content: center;
+		}
+	}
+</style>

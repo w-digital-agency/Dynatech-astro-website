@@ -1,0 +1,44 @@
+---
+// Direct Google Analytics 4 implementation
+const GA_MEASUREMENT_ID = import.meta.env.PUBLIC_GA_ID || 'G-XXXXXXXXXX';
+---
+
+<!-- Google Analytics 4 -->
+<script is:inline async src={`https://www.googletagmanager.com/gtag/js?id=${GA_MEASUREMENT_ID}`}></script>
+<script is:inline define:vars={{ GA_MEASUREMENT_ID }}>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  
+  gtag('config', GA_MEASUREMENT_ID, {
+    // Enhanced privacy settings
+    anonymize_ip: true,
+    allow_google_signals: false,
+    allow_ad_personalization_signals: false,
+    // Enhanced ecommerce for business tracking
+    send_page_view: true,
+    // Custom parameters for AI consulting business
+    custom_map: {
+      'custom_parameter_1': 'service_type',
+      'custom_parameter_2': 'consultation_stage'
+    }
+  });
+  
+  // Custom event tracking for AI consulting business
+  window.trackConsultation = function(action, service) {
+    gtag('event', action, {
+      event_category: 'consultation',
+      event_label: service,
+      value: 1
+    });
+  };
+  
+  // Contact form tracking
+  window.trackContactForm = function(step) {
+    gtag('event', 'form_interaction', {
+      event_category: 'contact',
+      event_label: step,
+      value: 1
+    });
+  };
+</script> 

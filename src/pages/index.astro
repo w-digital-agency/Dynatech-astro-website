@@ -1,0 +1,417 @@
+---
+import DefaultLayout from '../layouts/DefaultLayout.astro'
+import Hero from '../components/Hero.astro'
+import { SITE_TITLE, SITE_DESCRIPTION } from '../consts'
+---
+
+<DefaultLayout title={SITE_TITLE} description={SITE_DESCRIPTION}>
+	<Hero />
+	
+	<!-- AI Services Section -->
+	<section class="services-section">
+		<div class="container">
+			<h2 class="section-title">Our AI Services</h2>
+			<div class="services-grid">
+				<div class="service-card">
+					<div class="service-icon">🧠</div>
+					<h3>AI Strategy & Consulting</h3>
+					<p>Transform your business with comprehensive AI strategies that align with your objectives and drive measurable results.</p>
+				</div>
+				<div class="service-card">
+					<div class="service-icon">👥</div>
+					<h3>Executive AI Coaching</h3>
+					<p>Personalized coaching for leaders to understand AI's potential and lead successful AI initiatives in their organizations.</p>
+				</div>
+				<div class="service-card">
+					<div class="service-icon">🎓</div>
+					<h3>Team Training & Development</h3>
+					<p>Comprehensive training programs to equip your teams with AI knowledge and skills for the modern workplace.</p>
+				</div>
+				<div class="service-card">
+					<div class="service-icon">⚙️</div>
+					<h3>AI Solution Architecture</h3>
+					<p>Custom AI solutions designed and architected specifically for your business needs and existing systems.</p>
+				</div>
+				<div class="service-card">
+					<div class="service-icon">📈</div>
+					<h3>Performance Optimization</h3>
+					<p>Optimize your AI implementations for maximum performance, scalability, and return on investment.</p>
+				</div>
+				<div class="service-card">
+					<div class="service-icon">🛡️</div>
+					<h3>AI Ethics & Compliance</h3>
+					<p>Ensure your AI initiatives are ethical, compliant, and aligned with industry best practices and regulations.</p>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<!-- Why Choose Dynatech Section -->
+	<section class="why-choose-section">
+		<div class="container">
+			<div class="why-choose-grid">
+				<div class="content">
+					<h2>Why Choose Dynatech?</h2>
+					<p class="subtitle">
+						As Hong Kong's premier AI coaching and consulting firm, we combine deep technical expertise 
+						with practical business insights to deliver transformative results.
+					</p>
+					<ul class="benefits">
+						<li>
+							<span class="check">✓</span>
+							<span><strong>Local Expertise:</strong> Deep understanding of Hong Kong's business landscape</span>
+						</li>
+						<li>
+							<span class="check">✓</span>
+							<span><strong>Proven Track Record:</strong> 100+ successful AI implementations</span>
+						</li>
+						<li>
+							<span class="check">✓</span>
+							<span><strong>Practical Approach:</strong> Focus on real-world applications with measurable ROI</span>
+						</li>
+						<li>
+							<span class="check">✓</span>
+							<span><strong>Ongoing Support:</strong> Continuous guidance throughout your AI journey</span>
+						</li>
+					</ul>
+					<a href="/about" class="button">
+						Learn More About Us
+					</a>
+				</div>
+				<div class="image">
+					<img 
+						src="/blog-placeholder-about.jpg" 
+						alt="AI consulting team" 
+					/>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<!-- Client Success Stories -->
+	<section class="testimonials-section">
+		<div class="container">
+			<h2 class="section-title">Client Success Stories</h2>
+			<div class="testimonials-grid">
+				<div class="testimonial">
+					<p class="quote">
+						"Dynatech's AI coaching transformed our fintech startup. We implemented machine learning models 
+						that increased our prediction accuracy by 300%."
+					</p>
+					<div class="author">
+						<img 
+							src="https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg" 
+							alt="Alex Wong" 
+						/>
+						<div>
+							<h4>Alex Wong</h4>
+							<p>CEO, FinTech Innovations HK</p>
+						</div>
+					</div>
+				</div>
+
+				<div class="testimonial">
+					<p class="quote">
+						"Their AI consulting helped us automate 70% of our customer service operations while 
+						improving satisfaction scores significantly."
+					</p>
+					<div class="author">
+						<img 
+							src="https://images.pexels.com/photos/415829/pexels-photo-415829.jpeg" 
+							alt="Sarah Chen" 
+						/>
+						<div>
+							<h4>Sarah Chen</h4>
+							<p>Operations Director, RetailTech Asia</p>
+						</div>
+					</div>
+				</div>
+
+				<div class="testimonial">
+					<p class="quote">
+						"Dynatech's AI strategy coaching gave our team the confidence to implement solutions 
+						that generated HK$2M in additional revenue."
+					</p>
+					<div class="author">
+						<img 
+							src="https://images.pexels.com/photos/2379004/pexels-photo-2379004.jpeg" 
+							alt="Michael Li" 
+						/>
+						<div>
+							<h4>Michael Li</h4>
+							<p>CTO, Smart Logistics HK</p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<!-- Call to Action -->
+	<section class="cta-section">
+		<div class="container">
+			<h2>Ready to Transform Your Business with AI?</h2>
+			<p>
+				Join the growing number of Hong Kong businesses leveraging AI for competitive advantage. 
+				Start your transformation journey today.
+			</p>
+			<div class="cta-buttons">
+				<a href="/contact" class="button primary">
+					Get Started Today
+				</a>
+				<a href="/services" class="button secondary">
+					Our Services
+				</a>
+			</div>
+		</div>
+	</section>
+</DefaultLayout>
+
+<style>
+	.container {
+		max-width: 1200px;
+		margin: 0 auto;
+		padding: 0 1rem;
+	}
+	
+	.section-title {
+		font-size: 3.5rem;
+		text-align: center;
+		margin-bottom: 3rem;
+		color: #1f2937;
+	}
+	
+	/* Services Section */
+	.services-section {
+		padding: 4rem 0;
+	}
+	
+	.services-grid {
+		display: grid;
+		grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+		gap: 2rem;
+	}
+	
+	.service-card {
+		background: white;
+		padding: 2rem;
+		border-radius: 1rem;
+		box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+		text-align: center;
+		transition: transform 0.3s ease, box-shadow 0.3s ease;
+	}
+	
+	.service-card:hover {
+		transform: translateY(-5px);
+		box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+	}
+	
+	.service-icon {
+		font-size: 3rem;
+		margin-bottom: 1rem;
+	}
+	
+	.service-card h3 {
+		font-size: 1.5rem;
+		margin-bottom: 1rem;
+		color: #1f2937;
+	}
+	
+	.service-card p {
+		color: #6b7280;
+		line-height: 1.6;
+	}
+	
+	/* Why Choose Section */
+	.why-choose-section {
+		padding: 4rem 0;
+		background: #f9fafb;
+	}
+	
+	.why-choose-grid {
+		display: grid;
+		grid-template-columns: 1fr 1fr;
+		gap: 4rem;
+		align-items: center;
+	}
+	
+	.content h2 {
+		font-size: 3rem;
+		margin-bottom: 1.5rem;
+		color: #1f2937;
+	}
+	
+	.subtitle {
+		font-size: 1.25rem;
+		color: #6b7280;
+		margin-bottom: 2rem;
+		line-height: 1.6;
+	}
+	
+	.benefits {
+		list-style: none;
+		padding: 0;
+		margin-bottom: 2rem;
+	}
+	
+	.benefits li {
+		display: flex;
+		align-items: flex-start;
+		gap: 1rem;
+		margin-bottom: 1rem;
+	}
+	
+	.check {
+		color: #2563eb;
+		font-size: 1.25rem;
+		font-weight: bold;
+	}
+	
+	.image img {
+		width: 100%;
+		border-radius: 1rem;
+		box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+	}
+	
+	/* Testimonials Section */
+	.testimonials-section {
+		padding: 4rem 0;
+	}
+	
+	.testimonials-grid {
+		display: grid;
+		grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+		gap: 2rem;
+	}
+	
+	.testimonial {
+		background: white;
+		padding: 2rem;
+		border-radius: 1rem;
+		box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+	}
+	
+	.quote {
+		font-size: 1.125rem;
+		line-height: 1.6;
+		margin-bottom: 1.5rem;
+		font-style: italic;
+		color: #374151;
+	}
+	
+	.author {
+		display: flex;
+		align-items: center;
+		gap: 1rem;
+	}
+	
+	.author img {
+		width: 3rem;
+		height: 3rem;
+		border-radius: 50%;
+		object-fit: cover;
+	}
+	
+	.author h4 {
+		margin: 0;
+		font-size: 1rem;
+		color: #1f2937;
+	}
+	
+	.author p {
+		margin: 0;
+		font-size: 0.875rem;
+		color: #6b7280;
+	}
+	
+	/* CTA Section */
+	.cta-section {
+		padding: 4rem 0;
+		background: linear-gradient(135deg, #2563eb, #7c3aed);
+		text-align: center;
+		color: white;
+	}
+	
+	.cta-section h2 {
+		font-size: 3rem;
+		margin-bottom: 1rem;
+	}
+	
+	.cta-section p {
+		font-size: 1.25rem;
+		margin-bottom: 2rem;
+		max-width: 600px;
+		margin-left: auto;
+		margin-right: auto;
+	}
+	
+	.cta-buttons {
+		display: flex;
+		gap: 1rem;
+		justify-content: center;
+	}
+	
+	/* Buttons */
+	.button {
+		display: inline-block;
+		padding: 1rem 2rem;
+		border-radius: 0.5rem;
+		text-decoration: none;
+		font-weight: 600;
+		transition: all 0.3s ease;
+		border: 2px solid #2563eb;
+		background: #2563eb;
+		color: white;
+	}
+	
+	.button:hover {
+		transform: translateY(-2px);
+		box-shadow: 0 4px 12px rgba(37, 99, 235, 0.4);
+	}
+	
+	.button.primary {
+		background: white;
+		color: #2563eb;
+		border-color: white;
+	}
+	
+	.button.primary:hover {
+		background: #f1f5f9;
+	}
+	
+	.button.secondary {
+		background: transparent;
+		color: white;
+		border-color: white;
+	}
+	
+	.button.secondary:hover {
+		background: white;
+		color: #2563eb;
+	}
+	
+	/* Responsive */
+	@media (max-width: 768px) {
+		.why-choose-grid {
+			grid-template-columns: 1fr;
+			gap: 2rem;
+		}
+		
+		.cta-buttons {
+			flex-direction: column;
+			align-items: center;
+		}
+		
+		.section-title {
+			font-size: 2.5rem;
+		}
+		
+		.content h2 {
+			font-size: 2rem;
+		}
+		
+		.cta-section h2 {
+			font-size: 2rem;
+		}
+	}
+</style>
