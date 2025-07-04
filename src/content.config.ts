@@ -17,19 +17,4 @@ const blog = defineCollection({
 	}),
 });
 
-const portfolio = defineCollection({
-	loader: glob({ base: './src/content/portfolio', pattern: '**/*.{md,mdx}' }),
-	schema: z.object({
-		title: z.string(),
-		description: z.string(),
-		pubDate: z.coerce.date(),
-		category: z.enum(['AI Application', 'SEO', 'SEM', 'Website Marketing', 'E-Commerce', 'CRM', 'Event Marketing']),
-		client: z.string(),
-		heroImage: z.string(),
-		technologies: z.array(z.string()),
-		results: z.array(z.string()).optional(),
-		featured: z.boolean().default(false),
-	}),
-});
-
-export const collections = { blog, portfolio };
+export const collections = { blog };
